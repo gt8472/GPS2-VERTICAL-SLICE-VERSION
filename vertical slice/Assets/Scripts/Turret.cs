@@ -77,12 +77,17 @@ public class Turret : MonoBehaviour
 
         lockingTarget();
         
-        if(useLaser && isActivated == true)
+        
+        if(useLaser)
         {
-            
-            Laser();
-            
+            if(isActivated == true)
+            Laser(); 
+            else
+            {
+                lineRenderer.enabled = false;
+            }
         }
+
         else
         {
             if (fireCountdown <= 0f && isActivated == true)
@@ -120,18 +125,15 @@ public class Turret : MonoBehaviour
 
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, target.position);
-        if (/*isActivated == true &&*/ !lineRenderer.enabled)
+        if (isActivated == true && !lineRenderer.enabled)
         {
             lineRenderer.enabled = true;
-
-            
         }
-        /*else
-        {
-            lineRenderer.enabled = false;
-        }*/
+
 
         isActivated = false;
+
+       
     }
 
     void Shoot()

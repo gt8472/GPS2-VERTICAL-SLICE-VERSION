@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class CountDown : MonoBehaviour
 {
 
-    public int TotalTime = 12;
+    public int TotalTime = 1;
     public Text TimeText;
     CanvasGroup canvasGroup;
     private int mumite;
