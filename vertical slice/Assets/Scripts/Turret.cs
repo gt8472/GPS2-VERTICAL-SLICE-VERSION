@@ -26,7 +26,6 @@ public class Turret : MonoBehaviour
     [SerializeField] private int increasedDamage = 5;
     public LineRenderer lineRenderer;
     public float curDamageOverTime;
-    public bool useRocket;
 
     void Start()
     {
@@ -83,17 +82,6 @@ public class Turret : MonoBehaviour
             
             Laser();
             
-        }
-        else if(useRocket == true)
-        {
-            if (fireCountdown <= 0f && isActivated == true)
-            {
-                rocketShoot();
-                fireCountdown = 1f / fireRate;
-            }
-
-            fireCountdown -= Time.deltaTime;
-            isActivated = false;
         }
         else
         {
@@ -155,7 +143,6 @@ public class Turret : MonoBehaviour
         {
             bullet.Chase(target);
         }
-        SoundManager.PlaySound("Arrow1");
     }
 
     void rocketShoot()
@@ -167,7 +154,6 @@ public class Turret : MonoBehaviour
         {
             bullet.Chase(target);
         }
-        SoundManager.PlaySound("Rocket1");
     }
 
     void OnDrawGizmosSelected()

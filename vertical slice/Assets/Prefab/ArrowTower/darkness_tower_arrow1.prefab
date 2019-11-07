@@ -147,7 +147,7 @@ MonoBehaviour:
   partToRotate: {fileID: 1530655014281004468}
   enemyTag: Enemy
   isActivated: 0
-  range: 3
+  range: 6
   turningSpeed: 20
   fireRate: 1
   useLaser: 0
@@ -155,7 +155,6 @@ MonoBehaviour:
   increasedDamage: 5
   lineRenderer: {fileID: 0}
   curDamageOverTime: 0
-  useRocket: 0
 --- !u!1 &3511996470625635563
 GameObject:
   m_ObjectHideFlags: 0
