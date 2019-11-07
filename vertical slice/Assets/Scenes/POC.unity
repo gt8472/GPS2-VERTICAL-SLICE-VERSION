@@ -21162,6 +21162,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4547686704924367704, guid: e32c0c809aa8cbb4db0bd1491c728ff3,
+        type: 3}
+      propertyPath: JiangShiMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e45fd657d5b0d2847bff2da384dfbb63, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e32c0c809aa8cbb4db0bd1491c728ff3, type: 3}
 --- !u!1001 &2061344526
@@ -22472,7 +22477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMoney: 150
-  startLives: 20
+  startLives: 200
 --- !u!114 &6659988274295603494
 MonoBehaviour:
   m_ObjectHideFlags: 0

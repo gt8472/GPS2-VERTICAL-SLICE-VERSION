@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    public Material JiangShiMaterial;
     public float speed = 10;
+    int DownSpeed = 2;
     public float hp = 150;//enemy damage
     private float totalHp;
     private Slider hpSlider;
@@ -32,6 +34,7 @@ public class Enemy : MonoBehaviour
        Vector3 dir = positions[index].position - transform.position;
        float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
        transform.LookAt(positions[index].position);
+       
     }
 
     void Move()
@@ -46,7 +49,6 @@ public class Enemy : MonoBehaviour
         {
             ReachDestination();
         }
-        
     }
 
     void ReachDestination()//Link with improve founction 01(EnemySpawner) - When Enemy arrive at end point
@@ -73,7 +75,14 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         PlayerStats.Money += EarnMoney;
+        transform.Translate(Vector3.up * 90 * DownSpeed * Time.deltaTime);
+        StartCoroutine(WaitDie());       
+    }
+
+    IEnumerator WaitDie()
+    {
+        JiangShiMaterial.SetFloat("_DissolveThreshold", 0.1f);
+        yield return new WaitForSecondsRealtime(1);
         GameObject.Destroy(this.gameObject);
-        
     }
 }
