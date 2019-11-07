@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 {
     public Material JiangShiMaterial;
     public float speed = 10;
-    int DownSpeed = 2;
+    int DownSpeed = 2;//for enemy fall down speed
     public float hp = 150;//enemy damage
     private float totalHp;
     private Slider hpSlider;
@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator WaitDie()
     {
-        JiangShiMaterial.SetFloat("_DissolveThreshold", 0.1f);
+        JiangShiMaterial.SetFloat("_DissolveThreshold", 0.1f);//still doing tins
         yield return new WaitForSecondsRealtime(1);
         GameObject.Destroy(this.gameObject);
     }
