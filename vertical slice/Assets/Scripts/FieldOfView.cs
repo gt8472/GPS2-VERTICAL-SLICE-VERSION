@@ -11,6 +11,7 @@ public class FieldOfView : MonoBehaviour
 
     public LayerMask targetMask;
     public LayerMask obstacleMask;
+    public LayerMask doorMask;
 
     [HideInInspector]
     public List<Transform> visibleTargets = new List<Transform>();
@@ -177,10 +178,16 @@ public class FieldOfView : MonoBehaviour
              }*/
             //Debug.Log("Acticate Turret");
             hit.collider.gameObject.GetComponent<Turret>().Activateturret();
+            
+        }
+
+        if (Physics.Raycast(transform.position, dir, out hit, viewRadius, doorMask))
+        {
+            hit.collider.gameObject.GetComponent<Door>().ActivateDoor();
         }
 
 
-        if (Physics.Raycast(transform.position, dir, out hit, viewRadius, obstacleMask))
+            if (Physics.Raycast(transform.position, dir, out hit, viewRadius, obstacleMask))
         {
             return new ViewCastInfo(true, hit.point, hit.distance, globalAngle);
         }

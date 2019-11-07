@@ -51,6 +51,7 @@ public class Turret : MonoBehaviour
 
         if (nearestEnemy != null && shortestDistance <= range)
         {
+            
             target = nearestEnemy.transform;
             targetEnemy = nearestEnemy.GetComponent<Enemy>();
             targetEnemyRight = nearestEnemy.GetComponent<EnemyRight>();
@@ -59,10 +60,14 @@ public class Turret : MonoBehaviour
         {
             target = null;
         }
+
+
     }
 
     void Update()
     {
+ 
+
         if (target == null)
         {
             /*if(useLaser)
@@ -72,6 +77,7 @@ public class Turret : MonoBehaviour
                     lineRenderer.enabled = false;
                 }
             }*/
+            curDamageOverTime = oriDamageOverTime;
             return;
         }
 
@@ -84,6 +90,7 @@ public class Turret : MonoBehaviour
             Laser(); 
             else
             {
+                curDamageOverTime = oriDamageOverTime;
                 lineRenderer.enabled = false;
             }
         }

@@ -5524,6 +5524,9 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 512
+  doorMask:
+    serializedVersion: 2
+    m_Bits: 0
   visibleTargets: []
   meshResolution: 1
   edgeResolveIterations: 4
@@ -13889,6 +13892,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jiang Shi Model 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4040730559429375512, guid: b9e75119907a35e4299ee653425d2030,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1029308704036258827, guid: b9e75119907a35e4299ee653425d2030,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13947,12 +13955,12 @@ PrefabInstance:
     - target: {fileID: 5036563766677885119, guid: b9e75119907a35e4299ee653425d2030,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5036563766677885119, guid: b9e75119907a35e4299ee653425d2030,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9e75119907a35e4299ee653425d2030, type: 3}
@@ -21174,7 +21182,12 @@ PrefabInstance:
     - target: {fileID: 4547686704924367707, guid: e32c0c809aa8cbb4db0bd1491c728ff3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547686704924367707, guid: e32c0c809aa8cbb4db0bd1491c728ff3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 668777046916098376, guid: e32c0c809aa8cbb4db0bd1491c728ff3,
         type: 3}
@@ -21234,12 +21247,12 @@ PrefabInstance:
     - target: {fileID: 3780265097945341284, guid: e32c0c809aa8cbb4db0bd1491c728ff3,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3780265097945341284, guid: e32c0c809aa8cbb4db0bd1491c728ff3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4547686704924367704, guid: e32c0c809aa8cbb4db0bd1491c728ff3,
         type: 3}
