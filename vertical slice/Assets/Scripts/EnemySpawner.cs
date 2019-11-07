@@ -74,7 +74,10 @@ public class EnemySpawner : MonoBehaviour
             }
             yield return new WaitForSeconds(waveRateRight);
         }
-        yield return 0;
+        while(CountEnemyAlive > 0)
+        {
+            yield return 0;
+        }
         GameManager.Instance.Win();
     }
 }
