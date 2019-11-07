@@ -14,13 +14,18 @@ public class Enemy : MonoBehaviour
     private Transform[] positions;
     private int index = 0;
     public int EarnMoney = 10;
-    public float smooth = 1F;
+    public float smooth = 1.0f;
+    //public float dieTimer = 0.1f;
+    public float continueDieTimer;
+    public float startDietimer = 0.0f;
+
 
     void Start()
     {
         totalHp = hp;
         positions = Waypoints.positions;
         hpSlider = GetComponentInChildren<Slider>();
+        continueDieTimer = startDietimer;
     }
 
     void Update()
@@ -31,10 +36,10 @@ public class Enemy : MonoBehaviour
 
     void Facing()
     {
-       Vector3 dir = positions[index].position - transform.position;
-       float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
-       transform.LookAt(positions[index].position);
-       
+        Vector3 dir = positions[index].position - transform.position;
+        float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
+        transform.LookAt(positions[index].position);
+
     }
 
     void Move()
@@ -45,7 +50,7 @@ public class Enemy : MonoBehaviour
         {
             index++;
         }
-        if(index>positions.Length-1)
+        if (index > positions.Length - 1)
         {
             ReachDestination();
         }
@@ -68,21 +73,44 @@ public class Enemy : MonoBehaviour
         hp -= damage;
         hpSlider.value = (float)hp / totalHp;
         if (hp <= 0)
-        {          
+        {
             Die();
         }
     }
     void Die()
     {
         PlayerStats.Money += EarnMoney;
-        transform.Translate(Vector3.up * 90 * DownSpeed * Time.deltaTime);
-        StartCoroutine(WaitDie());       
+        //transform.Translate(Vector3.up * 90 * DownSpeed * Time.deltaTime);
+        StartCoroutine(WaitDie());
     }
 
     IEnumerator WaitDie()
     {
-        JiangShiMaterial.SetFloat("_DissolveThreshold", 0.1f);//still doing tins
+        while (continueDieTimer <= 1)
+        {
+            continueDieTimer += (0.1f + 0.5f) * Time.deltaTime;
+            JiangShiMaterial.SetFloat("_DissolveThreshold", continueDieTimer);
+            //continueDieTimer += dieTimer * Time.deltaTime;   dieTimer* Time.deltaTime    
+            yield return 0;
+        }
         yield return new WaitForSecondsRealtime(1);
         GameObject.Destroy(this.gameObject);
+        continueDieTimer = startDietimer; 
+
+        /*while (continueDieTimer >= 1)
+        {
+            yield return new WaitForSecondsRealtime(2);
+            GameObject.Destroy(this.gameObject);
+        }*/
+
+        //JiangShiMaterial.SetFloat("_DissolveThreshold", continueDieTimer);//still doing tins
+        //JiangShiMaterial.SetFloat("_DissolveThreshold", 0.8f);
+
+        /*else if (continueDieTimer >= 1)
+        {
+            yield return new WaitForSecondsRealtime(2);
+            GameObject.Destroy(this.gameObject);
+        }*/
+
     }
 }
