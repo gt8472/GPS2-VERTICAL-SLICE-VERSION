@@ -17,6 +17,7 @@ public class BuildManager : MonoBehaviour
 
     public GameObject standardTurrentPrefab;
     public GameObject anotherTurrentPrefab;
+    public GameObject mirrorTurrentPrefab;
 
     private TurrentBlueprint turrentToBuild;
     private MapCube selectedTurret;
@@ -40,6 +41,7 @@ public class BuildManager : MonoBehaviour
 
             GameObject turrent = (GameObject)Instantiate(turrentToBuild.prefab, mapCube.GetBuildPosition(), Quaternion.identity);
             mapCube.turrent = turrent;
+            SoundManager.PlaySound("Build1");
         }
         afterBuild = true;
         

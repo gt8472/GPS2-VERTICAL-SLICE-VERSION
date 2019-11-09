@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Door : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class Door : MonoBehaviour
     public float startTimer = 0;
     public float chargedTimer = 0;
     public float chargeOverTime = 1.0f;
+
+    [Header("Unity Stuff")]
+
+    public Image chargeBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +26,10 @@ public class Door : MonoBehaviour
         if(isActivatedDoor)
         {
             chargedTimer += chargeOverTime * Time.deltaTime;
-            if(chargedTimer >= 5)
+            chargeBar.fillAmount = chargedTimer / startTimer;
+            if(chargedTimer >= 100)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
             }
         }
         isActivatedDoor = false;

@@ -152,17 +152,7 @@ public class Turret : MonoBehaviour
         {
             bullet.Chase(target);
         }
-    }
-
-    void rocketShoot()
-    {
-        GameObject bulletObject = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Bullet bullet = bulletObject.GetComponent<Bullet>();
-
-        if (bullet != null)
-        {
-            bullet.Chase(target);
-        }
+        SoundManager.PlaySound("Arrow1");
     }
 
     void OnDrawGizmosSelected()

@@ -9,6 +9,7 @@ public class Shop : MonoBehaviour
 
     public TurrentBlueprint standardTurrent;
     public TurrentBlueprint rocketTurrent;
+    public TurrentBlueprint MirrorTurrent;
 
     
 
@@ -33,6 +34,11 @@ public class Shop : MonoBehaviour
     public void PurchaseRocketTurrent()
     {
         buildManager.SelectTurrentBuild(rocketTurrent);
+        buildManager.afterBuild = false;
+    }
+    public void PurchaseMirrorTurrent()
+    {
+        buildManager.SelectTurrentBuild(MirrorTurrent);
         buildManager.afterBuild = false;
     }
 }

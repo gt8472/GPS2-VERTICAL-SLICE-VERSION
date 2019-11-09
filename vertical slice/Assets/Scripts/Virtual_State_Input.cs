@@ -17,7 +17,7 @@ public class Virtual_State_Input : MonoBehaviour, IDragHandler, IEndDragHandler,
 
     void Start()
     {
-        initPos = this.transform.position;
+        initPos = this.transform.position ;
     }
 
     public void OnDrag(PointerEventData eventData)

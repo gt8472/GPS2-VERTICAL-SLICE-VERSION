@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static AudioClip arrowOne, rocketOne, winOne;
+    public static AudioClip arrowOne, rocketOne, winOne, buildOne;
 
     static AudioSource audioSrc;
 
@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour
         arrowOne = Resources.Load<AudioClip>("Arrow1");
         rocketOne = Resources.Load<AudioClip>("Rocket1");
         winOne = Resources.Load<AudioClip>("Win1");
+        buildOne = Resources.Load<AudioClip>("Build1");
 
         audioSrc = GetComponent<AudioSource>();
     }
@@ -38,6 +39,10 @@ public class SoundManager : MonoBehaviour
 
             case "Win1":
                 audioSrc.PlayOneShot(winOne);
+                break;
+
+            case "Build1":
+                audioSrc.PlayOneShot(buildOne);
                 break;
         }
     }
