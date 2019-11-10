@@ -7,17 +7,16 @@ public class Enemy : MonoBehaviour
 {
     public Material JiangShiMaterial;
     public float speed = 10;
-    int DownSpeed = 2;//for enemy fall down speed
+    //int DownSpeed = 2;//for enemy fall down speed
     public float hp = 150;//enemy damage
     private float totalHp;
     private Slider hpSlider;
     private Transform[] positions;
     private int index = 0;
     public int EarnMoney = 10;
-    public float smooth = 1.0f;
     //public float dieTimer = 0.1f;
-    public float continueDieTimer;
-    public float startDietimer = 0.0f;
+    //public float continueDieTimer;
+    //public float startDietimer = 0.0f;
 
 
     void Start()
@@ -25,7 +24,7 @@ public class Enemy : MonoBehaviour
         totalHp = hp;
         positions = Waypoints.positions;
         hpSlider = GetComponentInChildren<Slider>();
-        continueDieTimer = startDietimer;
+        //continueDieTimer = startDietimer;
     }
 
     void Update()
@@ -81,21 +80,22 @@ public class Enemy : MonoBehaviour
     {
         PlayerStats.Money += EarnMoney;
         //transform.Translate(Vector3.up * 90 * DownSpeed * Time.deltaTime);
-        StartCoroutine(WaitDie());
+        GameObject.Destroy(this.gameObject);
+        //StartCoroutine(WaitDie());
     }
 
-    IEnumerator WaitDie()
+    /*IEnumerator WaitDie()
     {
-        while (continueDieTimer <= 1)
+        /*foreach (Wave enemyPrefab in jiangshi)
         {
             continueDieTimer += (0.1f + 0.5f) * Time.deltaTime;
             JiangShiMaterial.SetFloat("_DissolveThreshold", continueDieTimer);
             //continueDieTimer += dieTimer * Time.deltaTime;   dieTimer* Time.deltaTime    
             yield return 0;
-        }
-        yield return new WaitForSecondsRealtime(1);
-        GameObject.Destroy(this.gameObject);
-        continueDieTimer = startDietimer; 
+        }*/
+        //yield return new WaitForSecondsRealtime(1);
+        //GameObject.Destroy(this.gameObject);
+        //continueDieTimer = startDietimer; 
 
         /*while (continueDieTimer >= 1)
         {
@@ -112,5 +112,5 @@ public class Enemy : MonoBehaviour
             GameObject.Destroy(this.gameObject);
         }*/
 
-    }
+    //}
 }
