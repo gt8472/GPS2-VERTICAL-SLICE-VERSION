@@ -8,11 +8,9 @@ public class Enemy : MonoBehaviour
 
     public Renderer JiangShiMaterial;
     public float speed = 10;
-    //int DownSpeed = 2;//for enemy fall down speed
     public float hp = 150;//enemy damage
     private float totalHp;
     private Slider hpSlider;
-    //private Material JiangShiMaterial;
     private Transform[] positions;
     private int index = 0;
     public int EarnMoney = 10;
@@ -107,12 +105,12 @@ public class Enemy : MonoBehaviour
         }
 
         //foreach (Wave enemyPrefab in jiangshi)
-        {
+        //{
             //continueDieTimer += (0.1f + 0.5f) * Time.deltaTime;
             //JiangShiMaterial.SetFloat("_DissolveThreshold", continueDieTimer);
             //continueDieTimer += dieTimer * Time.deltaTime;   dieTimer* Time.deltaTime    
             //yield return 0;
-        }
+       // }
         //
         //GameObject.Destroy(this.gameObject);
         //continueDieTimer = startDietimer; 

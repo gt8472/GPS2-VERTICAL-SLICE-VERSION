@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyRight : MonoBehaviour
 {
+    public Renderer JiangShiMaterial;
     public float speed = 10;
     public float hp = 150;//enemy damage
     private float totalHp;
@@ -12,6 +13,8 @@ public class EnemyRight : MonoBehaviour
     private Transform[] positions;
     private int index = 0;
     public int EarnMoney = 10;
+    public float dieTimer = 0.1f;
+    public float continueDieTimer;
 
     void Start()
     {
@@ -71,6 +74,26 @@ public class EnemyRight : MonoBehaviour
     void Die()
     {
         PlayerStats.Money += EarnMoney;
-        GameObject.Destroy(this.gameObject);
+        StartCoroutine(WaitDie());
+    }
+
+    IEnumerator WaitDie()
+    {
+        while (true)
+        {
+            continueDieTimer += 1.0f * Time.deltaTime;
+            continueDieTimer = (continueDieTimer > 1.0f) ? 1.0f : continueDieTimer;
+
+            JiangShiMaterial.material.SetFloat("_DissolveThreshold", continueDieTimer);
+
+            if (continueDieTimer >= 1.0f)
+            {
+                GameObject.Destroy(this.gameObject);
+                break;
+            }
+            //yield return new WaitForSecondsRealtime(1);        
+            yield return null;
+        }
+
     }
 }

@@ -155,6 +155,7 @@ MonoBehaviour:
   startTimer: 0
   chargedTimer: 0
   chargeOverTime: 1
+  fullCharge: 0
 --- !u!4 &15270566 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 8d8e1d3e4cf76c24ba7ed6562a37d913,
@@ -15635,28 +15636,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - enemyPrefab: {fileID: 4040730559429375512, guid: b9e75119907a35e4299ee653425d2030,
+  - enemyPrefab: {fileID: 1485457060486166069, guid: dae95bb5923de5645b946c1de214a986,
       type: 3}
     count: 1
     rate: 0.3
-  - enemyPrefab: {fileID: 4040730559429375512, guid: 4bfb53b42ca37514ea7cdc80217bbb67,
+  - enemyPrefab: {fileID: 1485457060486166069, guid: 874ec8bcdf56a874581b2bb611655552,
       type: 3}
     count: 3
     rate: 0.8
-  - enemyPrefab: {fileID: 4040730559429375512, guid: 5f66aa10770934a479e2f569146efe54,
+  - enemyPrefab: {fileID: 1485457060486166069, guid: 3a053a07caa043242889d8fdf8b1ddb7,
       type: 3}
     count: 5
     rate: 0.3
   rightwaves:
-  - enemyRightPrefab: {fileID: 2345515945621301150, guid: 8908e2704719cf240b08b2ca8dad834a,
+  - enemyRightPrefab: {fileID: 7993957896671030904, guid: 63cda87eda6750b4abd8270f39167bf4,
       type: 3}
     count: 5
     rate: 5
-  - enemyRightPrefab: {fileID: 2345515945621301150, guid: 0a040ea5abc619b4c9f53f06b0841dc6,
+  - enemyRightPrefab: {fileID: 7993957896671030904, guid: 28730035f897c274092bbd6bb1c6798b,
       type: 3}
     count: 3
     rate: 10
-  - enemyRightPrefab: {fileID: 2345515945621301150, guid: fc4d03fe74bb2c640ad0b3bcfb5abd82,
+  - enemyRightPrefab: {fileID: 7993957896671030904, guid: 658bc33f7034af3458733372ea737697,
       type: 3}
     count: 3
     rate: 15
