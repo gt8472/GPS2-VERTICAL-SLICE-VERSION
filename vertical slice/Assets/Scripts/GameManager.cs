@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public GameObject LoseUI;
     public GameObject WinUI;
-    public Text winMessage;
-    public Text loseMessage;
+    public GameObject ShopUI;
+    public GameObject JoyUI;
 
     public static GameManager Instance;
     private EnemySpawner EnemySpawner;
@@ -19,13 +19,15 @@ public class GameManager : MonoBehaviour
         EnemySpawner = GetComponent<EnemySpawner>();
         LoseUI.SetActive(false);
         WinUI.SetActive(false);
+
     }
 
     public void Win()
     {
         Time.timeScale = 0;
         WinUI.SetActive(true);
-        winMessage.text = "WIN!";
+        ShopUI.SetActive(false);
+        JoyUI.SetActive(false);
         SoundManager.PlaySound("Win1");
     }
 
@@ -41,7 +43,8 @@ public class GameManager : MonoBehaviour
     {
 
         LoseUI.SetActive(true);
-        loseMessage.text = "Game Over!";
+        ShopUI.SetActive(false);
+        JoyUI.SetActive(false);
         Time.timeScale = 0;
         //EnemySpawner.Stop();
     }
@@ -50,6 +53,8 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         LoseUI.SetActive(false);
+        ShopUI.SetActive(true);
+        JoyUI.SetActive(true);
         EnemySpawner.WaitPlayer();
     }
 
@@ -61,7 +66,7 @@ public class GameManager : MonoBehaviour
 
     public void OnButtonNextLevel()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1;
     }
 }

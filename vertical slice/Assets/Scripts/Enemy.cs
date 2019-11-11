@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public Material JiangShiMaterial;
+
+    public Renderer JiangShiMaterial;
     public float speed = 10;
-    //int DownSpeed = 2;//for enemy fall down speed
     public float hp = 150;//enemy damage
     private float totalHp;
     private Slider hpSlider;
     private Transform[] positions;
     private int index = 0;
     public int EarnMoney = 10;
-    //public float dieTimer = 0.1f;
-    //public float continueDieTimer;
+    public float dieTimer = 0.1f;
+    public float continueDieTimer;
     //public float startDietimer = 0.0f;
 
 
@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
         totalHp = hp;
         positions = Waypoints.positions;
         hpSlider = GetComponentInChildren<Slider>();
+        //JiangShiMaterial.GetComponent<Renderer>().material.SetFloat("_DissolveThreshold", totalHp / hp);
         //continueDieTimer = startDietimer;
     }
 
@@ -71,6 +72,7 @@ public class Enemy : MonoBehaviour
         if (hp <= 0) return;
         hp -= damage;
         hpSlider.value = (float)hp / totalHp;
+        //JiangShiMaterial.SetFloat("_DissolveThreshold", hp / totalHp);
         if (hp <= 0)
         {
             Die();
@@ -80,20 +82,36 @@ public class Enemy : MonoBehaviour
     {
         PlayerStats.Money += EarnMoney;
         //transform.Translate(Vector3.up * 90 * DownSpeed * Time.deltaTime);
-        GameObject.Destroy(this.gameObject);
-        //StartCoroutine(WaitDie());
+        //GameObject.Destroy(this.gameObject);
+        StartCoroutine(WaitDie());
     }
 
-    /*IEnumerator WaitDie()
+    IEnumerator WaitDie()
     {
-        /*foreach (Wave enemyPrefab in jiangshi)
+        while (true)
         {
-            continueDieTimer += (0.1f + 0.5f) * Time.deltaTime;
-            JiangShiMaterial.SetFloat("_DissolveThreshold", continueDieTimer);
+            continueDieTimer += 1.0f * Time.deltaTime;
+            continueDieTimer = (continueDieTimer > 1.0f) ? 1.0f : continueDieTimer;
+
+            JiangShiMaterial.material.SetFloat("_DissolveThreshold", continueDieTimer);
+
+            if(continueDieTimer >= 1.0f)
+            {
+                GameObject.Destroy(this.gameObject);
+                break;    
+            }
+            //yield return new WaitForSecondsRealtime(1);        
+            yield return null;
+        }
+
+        //foreach (Wave enemyPrefab in jiangshi)
+        //{
+            //continueDieTimer += (0.1f + 0.5f) * Time.deltaTime;
+            //JiangShiMaterial.SetFloat("_DissolveThreshold", continueDieTimer);
             //continueDieTimer += dieTimer * Time.deltaTime;   dieTimer* Time.deltaTime    
-            yield return 0;
-        }*/
-        //yield return new WaitForSecondsRealtime(1);
+            //yield return 0;
+       // }
+        //
         //GameObject.Destroy(this.gameObject);
         //continueDieTimer = startDietimer; 
 
@@ -111,6 +129,5 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSecondsRealtime(2);
             GameObject.Destroy(this.gameObject);
         }*/
-
-    //}
+    }
 }
