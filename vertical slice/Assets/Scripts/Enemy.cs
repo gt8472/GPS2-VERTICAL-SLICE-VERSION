@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public Material JiangShiMaterial;
+
+    //go_child.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+    public Renderer JiangShiMaterial;
     public float speed = 10;
     //int DownSpeed = 2;//for enemy fall down speed
     public float hp = 150;//enemy damage
     private float totalHp;
     private Slider hpSlider;
+    //private Material JiangShiMaterial;
     private Transform[] positions;
     private int index = 0;
     public int EarnMoney = 10;
@@ -24,6 +27,7 @@ public class Enemy : MonoBehaviour
         totalHp = hp;
         positions = Waypoints.positions;
         hpSlider = GetComponentInChildren<Slider>();
+        JiangShiMaterial.GetComponent<Renderer>().material.SetFloat("_DissolveThreshold", totalHp / hp);
         //continueDieTimer = startDietimer;
     }
 
@@ -71,6 +75,7 @@ public class Enemy : MonoBehaviour
         if (hp <= 0) return;
         hp -= damage;
         hpSlider.value = (float)hp / totalHp;
+        //JiangShiMaterial.SetFloat("_DissolveThreshold", hp / totalHp);
         if (hp <= 0)
         {
             Die();
